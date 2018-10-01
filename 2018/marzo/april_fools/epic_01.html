@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Yogome Email</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script>
+  
+  var deviceBrowser
+/*----------- check device ------------*/
+function naveFind() {
+  if (navigator.userAgent.match(/iPhone|iPad|iPod/i)){
+              deviceBrowser = 'isiDevice';
+           } 
+          //  if (navigator.userAgent.match(/Android/i)){
+          //    var deviceBrowser = 'isAndroid';
+          //  }
+           else {
+              deviceBrowser = 'isAndroid';
+           }
+}
+
+naveFind();
+           
+/*----------- gets current URL  ------------*/
+          var urlCheck = window.location.href;
+          console.log(deviceBrowser);
+          console.log(urlCheck);
+          let gameToOpenIos = [];
+          let gameToOpenAndroid = [];
+
+/*----------- Check if URL targets an specific game and asign deeplink to variable ------------*/
+
+            if (urlCheck.indexOf('epicheroes') > -1){
+              gameToOpenIos.push('www.google.com');  //<<<------------ Here change deeplink for EPIC HEROES IOS
+              gameToOpenAndroid.push('www.gmail.com'); //<<<------------ Here change deeplink for EPIC HEROES ANDROID
+              openDeeplink();
+            }
+            if (urlCheck.indexOf('smartkids') > -1){
+              gameToOpenIos.push('SmartKids://eyJjdXN0b20iOnsiZGF0ZSI6MTUwNDU2MjQ5OTI5NH19');//<<<------------ Here change deeplink for SMARTKIDS IOS
+              gameToOpenAndroid.push('');
+              openDeeplink();
+            }
+          /* else {
+              refreshIos();
+            }
+            console.log(gameToOpenIos);
+            console.log(gameToOpenAndroid);
+/*----------- openDeeplink : open deeplink  ------------*/
+            function openDeeplink(){
+              if (deviceBrowser == 'isiDevice')
+              {
+                alert("Se cargó en IOS");
+                  window.location.href = gameToOpenIos;
+                setTimeout(refreshIos, 2500);
+                
+              }
+              else
+              {
+                alert("Se cargó en Android");
+                  window.location.href = gameToOpenAndroid;
+                setTimeout(refreshAndroid, 2500);
+                
+              }
+            };
+/*----------- refreshIos : Send user to itunes store  ------------*/
+            function refreshIos(){
+              alert("No cargó en IOS");
+              window.location.href = 'https://itunes.apple.com/us/developer/yogome-inc/id536072105';
+              
+            };
+/*----------- refreshAndroid : Send user to play store  ------------*/
+            function refreshAndroid(){
+              alert("No cargó en Android");
+              window.location.href = 'https://play.google.com/store/apps/developer?id=Yogome,+Inc.';
+            };
+
+        </script>
+
+    </head>
+
+    <body>
+
+    </body>
+</html>

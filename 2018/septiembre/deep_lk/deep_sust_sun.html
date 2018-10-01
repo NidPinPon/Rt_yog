@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Minigame SustSunPower</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script>
+  
+  var deviceBrowser
+  
+/*----------- check device ------------*/
+function naveFind() {
+  if (navigator.userAgent.match(/iPhone|iPad|iPod/i)){
+              deviceBrowser = 'isiDevice';
+           } 
+          else if(navigator.userAgent.toLocaleLowerCase().includes('android')){
+            deviceBrowser = 'isAndroid';
+          }
+
+           else {
+              deviceBrowser = 'isDesktop';
+           }
+           openDeeplink();
+}
+naveFind();
+         
+/*----------- gets current URL  ------------*/
+          var urlCheck = window.location.href;
+          console.log(deviceBrowser);
+          console.log(urlCheck);
+
+/*----------- openDeeplink : open deeplink  ------------*/
+            function openDeeplink(){
+              if (deviceBrowser == 'isiDevice')
+              {
+                  window.location.href = 'SmartKids://eyJjdXN0b20iOnsic3MiOiJtYW5hZ2VyIiwgIm1nIjoiU3VzdFN1blBvd2VyIiwiZGF0ZSI6MTUzNzIwNzU1MH19';
+                setTimeout(refreshIos, 2500);
+                
+              }
+              else{
+                    if (deviceBrowser == 'isAndroid'){
+                      window.location.href = 'intent://eyJjdXN0b20iOnsic3MiOiJtYW5hZ2VyIiwgIm1nIjoiU3VzdFN1blBvd2VyIiwiZGF0ZSI6MTUzNzIwNzU1MH19#Intent;scheme=SmartKids;end';
+                      setTimeout(refreshAndroid, 2500);
+                      
+                    }
+                    else {
+                      window.location.href = 'https://www.yogome.com/';
+                    }    
+              }
+            };
+/*----------- refreshIos : Send user to itunes store  ------------*/
+            function refreshIos(){
+              //alert("No cargó en IOS");
+              window.location.href = 'https://itunes.apple.com/us/developer/yogome-inc/id536072105';
+              
+            };
+/*----------- refreshAndroid : Send user to play store  ------------*/
+            function refreshAndroid(){
+              //alert("No cargó en Android");
+              window.location.href = 'https://play.google.com/store/apps/developer?id=Yogome,+Inc.';
+            };
+
+        </script>
+
+    </head>
+
+    <body>
+
+    </body>
+</html>
